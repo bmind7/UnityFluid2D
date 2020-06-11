@@ -1,6 +1,8 @@
 # UnityFluid2D
  Various implementations of Jos Stam fluid sim paper, with performance comparison.
 
+ ![Sim](demo.gif?raw=True)
+
 ## Original Stam implementation
 Based on Jos Stam papaer "Real-Time Fluid Dynamics for Games"
 https://pdfs.semanticscholar.org/847f/819a4ea14bd789aca8bc88e85e906cfc657c.pdf
