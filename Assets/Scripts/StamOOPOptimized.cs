@@ -55,8 +55,8 @@ public class StamOOPOptimized : MonoBehaviour
         m_VisColors         = m_VisTex.GetPixels();
 
         // Init external forces and dye
-        m_DyeSources[ c_Size / 2, c_Size / 3 ]      = new Vector3( 22.0f, 0.0f, 22.0f );
-        m_DyeSources[ c_Size / 3, c_Size / 2 ]      = new Vector3( 0.0f, 18.0f, 18.0f );
+        m_DyeSources[ c_Size / 2, c_Size / 3 ]      = new Vector3( 50.0f, 0.0f, 50.0f );
+        m_DyeSources[ c_Size / 3, c_Size / 2 ]      = new Vector3( 0.0f, 40.0f, 40.0f );
         m_ForceSources[ c_Size / 2, c_Size / 3 ]    = new Vector3( 22.0f, 22.0f, 0f );
         m_ForceSources[ c_Size / 3, c_Size / 2 ]    = new Vector3( 18.0f, 18.0f, 0f );
 
