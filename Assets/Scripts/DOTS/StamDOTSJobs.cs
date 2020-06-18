@@ -1,7 +1,9 @@
 ﻿using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
+using Unity.Burst;
 
+[BurstCompile]
 public struct AddExternalSourcesPJob : IJobParallelFor
 {
     //-----------------------------------------------------------------
@@ -18,6 +20,7 @@ public struct AddExternalSourcesPJob : IJobParallelFor
     //-----------------------------------------------------------------
 }
 
+[BurstCompile]
 public struct UpdateBoundsPJob : IJobParallelFor
 {
     //-----------------------------------------------------------------
@@ -43,6 +46,7 @@ public struct UpdateBoundsPJob : IJobParallelFor
     //-----------------------------------------------------------------
 }
 
+[BurstCompile]
 public struct LinSolverPJob : IJobParallelFor
 {
     //-----------------------------------------------------------------
@@ -82,6 +86,7 @@ public struct LinSolverPJob : IJobParallelFor
     //-----------------------------------------------------------------
 }
 
+[BurstCompile]
 public struct AdvectPJob : IJobParallelFor
 {
     //-----------------------------------------------------------------
@@ -127,6 +132,7 @@ public struct AdvectPJob : IJobParallelFor
     //-----------------------------------------------------------------
 }
 
+[BurstCompile]
 public struct CreateDivFieldPJob : IJobParallelFor
 {
     //-----------------------------------------------------------------
@@ -165,6 +171,7 @@ public struct CreateDivFieldPJob : IJobParallelFor
     //-----------------------------------------------------------------
 }
 
+[BurstCompile]
 public struct NormalizeFieldPJob : IJobParallelFor
 {
     //-----------------------------------------------------------------

@@ -244,7 +244,6 @@ public class StamDOTS : MonoBehaviour
 
         m_VisTex.SetPixels( m_VisColors );
         m_VisTex.Apply();
-    //-----------------------------------------------------------------
     }
     //-----------------------------------------------------------------
     private int Idx( int i, int j )

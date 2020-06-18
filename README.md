@@ -19,17 +19,17 @@ Has better performance than previous one, but still worse than Stam's original c
 Due to implementation specifics the visual result is slightly different from Original Stam. It happens because **deltaTime** is significantly lower. 
 
 ## DOTS + Burst
-SOON
+There is a chance of even more increase of performance by using Unity.Mathematics float3 struct (could be tested down the line)
 
 ## Compute Shaders
 SOON
 
-*Note: Tested on IL2CPP standalone build*
+*Note: Tested on IL2CPP standalone build, x86_64*
 Implementation | frame time (ms)
 ---------------|--------------
-Original|23ms
-OOP|44ms
-OOP Optimized|39ms
-DOTS|9ms
-DOTS + Burst|-
+Original|15ms
+OOP|34ms
+OOP Optimized|26ms
+DOTS|7.2ms
+DOTS + Burst|5.8ms
 Compute Shaders|-
