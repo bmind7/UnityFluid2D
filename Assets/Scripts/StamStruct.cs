@@ -4,10 +4,9 @@ using UnityEngine.UI;
 //-----------------------------------------------------------------
 // Based on Jos Stam papaer "Real-Time Fluid Dynamics for Games"
 // https://pdfs.semanticscholar.org/847f/819a4ea14bd789aca8bc88e85e906cfc657c.pdf
-// OOP version of the original code, some optimization was made to avoid 
-// multiple creation of Vector3 strcuts during computations
+// OOP version of the original code
 // Added: support colored dye
-public class StamOOPOptimized : MonoBehaviour
+public class StamStruct : MonoBehaviour
 {
     //-----------------------------------------------------------------
     public const int            c_Size = 128;
@@ -120,14 +119,9 @@ public class StamOOPOptimized : MonoBehaviour
             for( int i = 1; i <= c_Size; i++ )
                 for( int j = 1; j <= c_Size; j++ )
                 {
-                    // - Derivation explained in the paper, we can't just blur the cell 
+                    // Derivation explained in the paper, we can't just blur the cell 
                     // because it can lead to cell explostion when is "a > 0.5"
-                    // - Constrcut only one Vector3 to avoid ctor invocation during math operations
-                    x[ i, j ] = new Vector3(
-                        ( x0[ i, j ].x + a * ( x[ i - 1, j ].x + x[ i + 1, j ].x + x[ i, j - 1 ].x + x[ i, j + 1 ].x ) ) / c,
-                        ( x0[ i, j ].y + a * ( x[ i - 1, j ].y + x[ i + 1, j ].y + x[ i, j - 1 ].y + x[ i, j + 1 ].y ) ) / c,
-                        ( x0[ i, j ].z + a * ( x[ i - 1, j ].z + x[ i + 1, j ].z + x[ i, j - 1 ].z + x[ i, j + 1 ].z ) ) / c
-                    );
+                    x[ i, j ] = ( x0[ i, j ] + a * ( x[ i - 1, j ] + x[ i + 1, j ] + x[ i, j - 1 ] + x[ i, j + 1 ] ) ) / c;
                 }
 
             UpdateBounds( x );
@@ -175,11 +169,8 @@ public class StamOOPOptimized : MonoBehaviour
                 float s1 = x - i0, s0 = 1 - s1;
                 float t1 = y - j0, t0 = 1 - t1;
                 // Constrcut only one Vector3 to avoid ctor invocation during math operations
-                d[ i, j ] = new Vector3(
-                        s0 * ( t0 * d0[ i0, j0 ].x + t1 * d0[ i0, j1 ].x ) + s1 * ( t0 * d0[ i1, j0 ].x + t1 * d0[ i1, j1 ].x ),
-                        s0 * ( t0 * d0[ i0, j0 ].y + t1 * d0[ i0, j1 ].y ) + s1 * ( t0 * d0[ i1, j0 ].y + t1 * d0[ i1, j1 ].y ),
-                        s0 * ( t0 * d0[ i0, j0 ].z + t1 * d0[ i0, j1 ].z ) + s1 * ( t0 * d0[ i1, j0 ].z + t1 * d0[ i1, j1 ].z )
-                    );
+                d[ i, j ] = s0 * ( t0 * d0[ i0, j0 ] + t1 * d0[ i0, j1 ] ) + 
+                            s1 * ( t0 * d0[ i1, j0 ] + t1 * d0[ i1, j1 ] );
             }
 
         UpdateBounds( d );

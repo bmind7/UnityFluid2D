@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 308152915}
   - component: {fileID: 308152914}
   m_Layer: 0
-  m_Name: StamOOP
+  m_Name: StamStruct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 922532239}
   - component: {fileID: 922532238}
   m_Layer: 5
-  m_Name: b_OOP
+  m_Name: b_Struct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1071,7 +1071,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: OOP Optimized Stam
+  m_Text: Struct Optimized Stam
 --- !u!222 &1171377393
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1249,7 +1249,7 @@ GameObject:
   - component: {fileID: 1485051979}
   - component: {fileID: 1485051978}
   m_Layer: 5
-  m_Name: b_OOPOpt
+  m_Name: b_StructOpt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1422,7 +1422,7 @@ GameObject:
   - component: {fileID: 1630349344}
   - component: {fileID: 1630349345}
   m_Layer: 0
-  m_Name: StamOOPOptimized
+  m_Name: StamStructOptimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1899,7 +1899,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: OOP Stam
+  m_Text: Struct Stam
 --- !u!222 &2053005909
 CanvasRenderer:
   m_ObjectHideFlags: 0
