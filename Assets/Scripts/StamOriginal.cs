@@ -74,9 +74,9 @@ public class StamOriginal : MonoBehaviour
         AddExternalSources( m_Vx, m_Sources );
         AddExternalSources( m_Vy, m_Sources );
 
-        ( m_Vx, m_Vx0 ) = ( m_Vx0, m_Vx );
+        (m_Vx, m_Vx0) = (m_Vx0, m_Vx);
         Diffuse( m_Vx, m_Vx0, c_Visc );
-        ( m_Vy, m_Vy0 ) = ( m_Vy0, m_Vy );
+        (m_Vy, m_Vy0) = (m_Vy0, m_Vy);
         Diffuse( m_Vy, m_Vy0, c_Visc );
 
         // Project before self-advection, makes results more precise 
@@ -86,7 +86,7 @@ public class StamOriginal : MonoBehaviour
         (m_Vy, m_Vy0) = (m_Vy0, m_Vy);
         Advect( m_Vx, m_Vx0, m_Vx0, m_Vy0 );
         Advect( m_Vy, m_Vy0, m_Vx0, m_Vy0 );
-        
+
         // Final correction of velocity field
         Project( m_Vx, m_Vy, m_Vx0, m_Vy0 );
 
@@ -94,10 +94,10 @@ public class StamOriginal : MonoBehaviour
         // Density Step - Move densities across the volume
         AddExternalSources( m_Density, m_Sources );
 
-        ( m_Density, m_Density0 ) = ( m_Density0, m_Density );
+        (m_Density, m_Density0) = (m_Density0, m_Density);
         Diffuse( m_Density, m_Density0, c_Diff );
 
-        ( m_Density, m_Density0 ) = ( m_Density0, m_Density );
+        (m_Density, m_Density0) = (m_Density0, m_Density);
         Advect( m_Density, m_Density0, m_Vx, m_Vy );
 
         //------

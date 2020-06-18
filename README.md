@@ -16,7 +16,7 @@ Suffers from weak performance due to many *Vector3.ctor()* calls during maths op
 Has better performance than previous one, but still worse than Stam's original code
 
 ## DOTS version
-SOON
+Due to implementation specifics the visual result is slightly different from Original Stam. It happens because **deltaTime** is significantly lower. 
 
 ## DOTS + Burst
 SOON
@@ -24,11 +24,12 @@ SOON
 ## Compute Shaders
 SOON
 
+*Note: Tested on IL2CPP standalone build*
 Implementation | frame time (ms)
 ---------------|--------------
-Original|29ms
-OOP|105ms
-OOP Optimized|49ms
-DOTS|-
+Original|23ms
+OOP|44ms
+OOP Optimized|39ms
+DOTS|9ms
 DOTS + Burst|-
 Compute Shaders|-
