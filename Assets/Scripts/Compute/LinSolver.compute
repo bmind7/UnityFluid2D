@@ -1,0 +1,15 @@
+﻿#pragma kernel CSMain
+
+Texture2D<float4>   x0;
+Texture2D<float4>   xC;
+RWTexture2D<float4> x;
+float               a;
+float               c;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    float4 n = x[uint2(id.x - 1, id.y)] + x[uint2(id.x + 1, id.y)] + x[uint2(id.x, id.y - 1)] + x[uint2(id.x, id.y + 1)];
+    x[id.xy] = (x0[id.xy] +
+        a * n) / c;
+}

@@ -1,0 +1,13 @@
+﻿#pragma kernel CSMain
+
+RWTexture2D<float4> x;
+int                 size;
+
+[numthreads(8,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    x[uint2(0, id.x)]          = x[uint2(size - 2, id.x)];
+    x[uint2(size - 1, id.x)]   = x[uint2(1, id.x)];
+    x[uint2(id.x, 0)]          = x[uint2(id.x, size - 2)];
+    x[uint2(id.x, size - 1)]   = x[uint2(id.x, 1)];
+}

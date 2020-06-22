@@ -1,0 +1,26 @@
+﻿#pragma kernel CSMain
+
+RWTexture2D<float4> d;
+Texture2D<float4>   d0;
+Texture2D<float4>   v;
+int                 size;
+float               dt0;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    float x = id.x - dt0 * v[id.xy].x;
+    float y = id.y - dt0 * v[id.xy].y;
+    x = max(x, 0.5f);
+    y = max(y, 0.5f);
+    x = min(x, size + 0.5f);
+    y = min(y, size + 0.5f);
+    int i0 = (int)x, i1 = i0 + 1;
+    int j0 = (int)y, j1 = j0 + 1;
+
+    float s1 = x - i0, s0 = 1 - s1;
+    float t1 = y - j0, t0 = 1 - t1;
+    // Constrcut only one Vector3 to avoid ctor invocation during math operations
+    d[id.xy] = s0 * (t0 * d0[uint2(i0, j0)] + t1 * d0[uint2(i0, j1)]) +
+               s1 * (t0 * d0[uint2(i1, j0)] + t1 * d0[uint2(i1, j1)]);
+}

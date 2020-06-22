@@ -1,0 +1,11 @@
+﻿#pragma kernel ModifyField
+
+StructuredBuffer<float4>    sources;
+RWTexture2D<float4>         field;
+int                         size;
+
+[numthreads(8,8,1)]
+void ModifyField(uint3 id : SV_DispatchThreadID)
+{
+    field[id.xy] = sources[id.x + id.y * size];
+}

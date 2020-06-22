@@ -1,0 +1,37 @@
+﻿#pragma kernel CreateDivField
+#pragma kernel SmoothDivField
+#pragma kernel NormalizeField
+
+Texture2D<float4>   vC; 
+RWTexture2D<float4> v;
+RWTexture2D<float4> div;
+int                 size;
+
+[numthreads(8,8,1)]
+void CreateDivField(uint3 id : SV_DispatchThreadID)
+{
+    // Store divirgence field in X component of the vector
+    div[id.xy] = float4(
+        -0.5f * (vC[uint2(id.x + 1, id.y)].x - vC[uint2(id.x - 1, id.y)].x + vC[uint2(id.x, id.y + 1)].y - vC[uint2(id.x, id.y - 1)].y) / size,
+        0, 0, 0);
+}
+
+[numthreads(8, 8, 1)]
+void SmoothDivField(uint3 id : SV_DispatchThreadID)
+{
+    // Store smoothed field in Y component of the vector
+    div[id.xy] = float4(
+        div[id.xy].x,
+        (div[id.xy].x + (div[uint2(id.x - 1, id.y)].y + div[uint2(id.x + 1, id.y)].y + div[uint2(id.x, id.y - 1)].y + div[uint2(id.x, id.y + 1)].y)) / 4.0f,
+        0, 0);
+}
+
+[numthreads(8, 8, 1)]
+void NormalizeField(uint3 id : SV_DispatchThreadID)
+{
+    // Normalize speed so there is no divirgence in the field
+    v[id.xy] = float4(
+        v[id.xy].x - 0.5f * size * (div[uint2(id.x + 1, id.y)].y - div[uint2(id.x - 1, id.y)].y),
+        v[id.xy].y - 0.5f * size * (div[uint2(id.x, id.y + 1)].y - div[uint2(id.x, id.y - 1)].y),
+        0, 0 );
+}

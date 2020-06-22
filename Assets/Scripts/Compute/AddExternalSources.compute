@@ -1,0 +1,11 @@
+﻿#pragma kernel CSMain
+
+Texture2D<float4>   source;
+RWTexture2D<float4> field;
+float               deltaTime;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    field[id.xy] = field[id.xy] + deltaTime * source[id.xy];
+}
