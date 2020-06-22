@@ -29,8 +29,8 @@ There is noticable artifacts when **deltaTime** gets lower 10ms. Probably can be
 Implementation | frame time (ms)
 ---------------|--------------
 Original|15ms
-OOP|34ms
-OOP Optimized|26ms
+Struct|34ms
+Struct Optimized|26ms
 DOTS|7.2ms
 DOTS + Burst|5.8ms
 Compute Shaders|~3ms
